@@ -7,10 +7,21 @@ const app = express()
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const URL = process.env.URL;
 const PORT = process.env.PORT || 5000;
+/* git add .
+git commit -m 'commit message'
+git push heroku master */
 // https://boiling-fjord-89423.herokuapp.com/ 
+
+/* echo "# Random_data99" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/amitSharma7741/Random_data99.git
+git push -u origin main */
 const bot = new Telegraf(BOT_TOKEN)
-// bot.telegram.setWebhook(`${URL}/bot${BOT_TOKEN}`);
-// app.use(bot.webhookCallback(`/bot${BOT_TOKEN}`));
+bot.telegram.setWebhook(`${URL}/bot${BOT_TOKEN}`);
+app.use(bot.webhookCallback(`/bot${BOT_TOKEN}`));
 
 bot.start((ctx) => {
 
