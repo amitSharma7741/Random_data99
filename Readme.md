@@ -4,7 +4,7 @@ Telegram Bots are third-party applications that run inside Telegram. Users can i
 
 
 
-## Steps to host your Telegram bot
+## Steps to create your Telegram bot
  
  ### 1. Enter [@Botfather](https://t.me/botfather) in the search tab and choose this bot.
 
@@ -30,7 +30,7 @@ In response, you receive a list of commands to manage bots.
 
 
 
-
+## Steps to host your Telegram bot
 
 - [ ] Init a new git repo:
     ```bash
