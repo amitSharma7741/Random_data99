@@ -33,14 +33,19 @@ bot.action("Maths-Fact", (ctx) => {
   axios
     .get("http://numbersapi.com/random/math?json")
     .then((res) => {
-      bot.telegram.sendMessage(ctx.chat.id, res.data.text, {
+        var text = res.data.text;
+        var text = text.replace(/[^a-zA-Z0-9 ]/g, "");
+       
+
+      bot.telegram.sendMessage(ctx.chat.id,  text, {
         reply_markup: {
           inline_keyboard: [
             [
-              { text: "Maths-Fact", callback_data: "Maths-Fact" },
-              { text: "Memes", callback_data: "Memes" },
-            ],
-            [{ text: "Jokes", callback_data: "Jokes" }],
+                { text: "Maths-Fact", callback_data: "Maths-Fact" },
+                { text: "Jokes", callback_data: "Jokes" },
+              ],
+              [{ text: "Memes", callback_data: "Memes" },
+              { text: "Indian-Memes", callback_data: "indian-memes" }],
           ],
         },
       });
@@ -66,19 +71,20 @@ bot.action("Jokes", (ctx) => {
         "Your Jokes is Here" +
         "\n" +
         "\n" +
-        ` Joke: " ${jokesData.setup}" ` +
+        `Joke: " ${jokesData.setup}" ` +
         "\n" +
         "\n" +
-        `punchline: "${jokesData.punchline}"`;
+        `Punchline: "${jokesData.punchline}"`;
 
       bot.telegram.sendMessage(ctx.chat.id, finalJoke, {
         reply_markup: {
           inline_keyboard: [
             [
-              { text: "Maths-Fact", callback_data: "Maths-Fact" },
-              { text: "Memes", callback_data: "Memes" },
-            ],
-            [{ text: "Jokes", callback_data: "Jokes" }],
+                { text: "Maths-Fact", callback_data: "Maths-Fact" },
+                { text: "Jokes", callback_data: "Jokes" },
+              ],
+              [{ text: "Memes", callback_data: "Memes" },
+              { text: "Indian-Memes", callback_data: "indian-memes" }],
           ],
         },
       });
@@ -93,16 +99,17 @@ bot.action("Memes", (ctx) => {
   ctx.answerCbQuery("Your Meme is Here");
 
   axios
-    .get("https://meme-api.herokuapp.com/gimme")
+    .get("https://meme-api.com/gimme/dank")
     .then((res) => {
       bot.telegram.sendPhoto(ctx.chat.id, res.data.url, {
         reply_markup: {
           inline_keyboard: [
             [
-              { text: "Maths-Fact", callback_data: "Maths-Fact" },
-              { text: "Memes", callback_data: "Memes" },
-            ],
-            [{ text: "Jokes", callback_data: "Jokes" }],
+                { text: "Maths-Fact", callback_data: "Maths-Fact" },
+                { text: "Jokes", callback_data: "Jokes" },
+              ],
+              [{ text: "Memes", callback_data: "Memes" },
+              { text: "Indian-Memes", callback_data: "indian-memes" }],
           ],
         },
       });
@@ -110,6 +117,30 @@ bot.action("Memes", (ctx) => {
       // console.log(res.data.url);
 
       // bot.telegram.sendPhoto(ctx.chat.id,res.data.url)
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+});
+
+bot.action("indian-memes", (ctx) => {
+  ctx.answerCbQuery("Your Meme is Here");
+
+  axios
+    .get("https://meme-api.com/gimme/IndianDankMemes")
+    .then((res) => {
+      bot.telegram.sendPhoto(ctx.chat.id, res.data.url, {
+        reply_markup: {
+          inline_keyboard: [
+            [
+              { text: "Maths-Fact", callback_data: "Maths-Fact" },
+              { text: "Jokes", callback_data: "Jokes" },
+            ],
+            [{ text: "Memes", callback_data: "Memes" },
+            { text: "Indian-Memes", callback_data: "indian-memes" }],
+          ],
+        },
+      });
     })
     .catch((e) => {
       console.log(e);
