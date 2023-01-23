@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1" 
   },
   "author": "Amit Sharma",
   "license": "ISC",
@@ -13,6 +12,7 @@
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "netlify-lambda": "^2.0.15",
     "telegraf": "^4.4.2"
   }
 }
